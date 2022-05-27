@@ -1,0 +1,137 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.16
+-- Dumped by pg_dump version 11.16
+
+-- Started on 2022-05-26 23:46:17
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+DROP DATABASE covinoc;
+--
+-- TOC entry 2816 (class 1262 OID 16393)
+-- Name: covinoc; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE covinoc WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'Spanish_Colombia.1252' LC_CTYPE = 'Spanish_Colombia.1252';
+
+
+ALTER DATABASE covinoc OWNER TO postgres;
+
+\connect covinoc
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 197 (class 1259 OID 16411)
+-- Name: tareas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tareas (
+    id integer NOT NULL,
+    title character varying(255),
+    status integer,
+    created_at timestamp without time zone
+);
+
+
+ALTER TABLE public.tareas OWNER TO postgres;
+
+--
+-- TOC entry 196 (class 1259 OID 16409)
+-- Name: TAREAS_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."TAREAS_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."TAREAS_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2817 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: TAREAS_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."TAREAS_id_seq" OWNED BY public.tareas.id;
+
+
+--
+-- TOC entry 2685 (class 2604 OID 16414)
+-- Name: tareas id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tareas ALTER COLUMN id SET DEFAULT nextval('public."TAREAS_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2810 (class 0 OID 16411)
+-- Dependencies: 197
+-- Data for Name: tareas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tareas (id, title, status, created_at) FROM stdin;
+2	p	1	2022-05-24 00:00:00
+1	p	1	2022-05-24 00:00:00
+3	Ttulo de prueba 5	7	\N
+4	Ttulo de prueba 8	7	\N
+5	Ttulo de prueba 10	10	2022-05-26 00:00:00
+6	Ttulo de prueba 11	11	2022-05-26 00:00:00
+7	Ttulo de prueba 12	12	2022-05-26 18:52:41.567
+\.
+
+
+--
+-- TOC entry 2818 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: TAREAS_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."TAREAS_id_seq"', 7, true);
+
+
+--
+-- TOC entry 2687 (class 2606 OID 16416)
+-- Name: tareas TAREAS_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tareas
+    ADD CONSTRAINT "TAREAS_pkey" PRIMARY KEY (id);
+
+
+-- Completed on 2022-05-26 23:46:17
+
+--
+-- PostgreSQL database dump complete
+--
+
